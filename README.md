@@ -56,24 +56,6 @@ npm start
 
 ---
 
-## 📂 Folder Structure
-
-```
-jobhiring/
-├── ONLINE PORTAL/             # Frontend HTML, CSS, JS
-├── routes/                    # Express route handlers
-├── server/                    # Backend logic
-├── node_modules/              # npm dependencies
-├── objects/                   # Mock/test data
-├── screenshots/               # All project screenshots (images)
-├── test-*.js                  # API/DB test scripts
-├── server.js                  # Entry point
-├── package.json               # Project metadata
-├── .env                       # Environment config
-└── README.md                  # Project documentation
-```
-
----
 
 ## 📡 API Endpoints
 
@@ -94,26 +76,32 @@ jobhiring/
 
 ### 🏠 Home Page
 ![Home Page](https://github.com/hafsa274/jobhiring/blob/ab6608f72ec83ae37319c495789a8400af050b99/screenshots/home-page-1.png)
+
 ![Home Page 2](https://github.com/hafsa274/jobhiring/blob/ab6608f72ec83ae37319c495789a8400af050b99/screenshots/home-page-2.png)
+
 ![Home Page 3](https://github.com/hafsa274/jobhiring/blob/ab6608f72ec83ae37319c495789a8400af050b99/screenshots/home-page-3.png)
+
 ![Home Page 4](https://github.com/hafsa274/jobhiring/blob/ab6608f72ec83ae37319c495789a8400af050b99/screenshots/home-page-4.png)
 
 ---
 
 ### ℹ️ About Page
 ![About Page 1](https://github.com/hafsa274/jobhiring/blob/a54356f4815370d77a8ca0d1061e0471ba219376/screenshots/about-pg-1.png)
+
 ![About Page 2](https://github.com/hafsa274/jobhiring/blob/ab6608f72ec83ae37319c495789a8400af050b99/screenshots/about-pg-2.png)
 
 ---
 
 ### 📩 Contact Page
 ![Contact Page 1](https://github.com/hafsa274/jobhiring/blob/ab6608f72ec83ae37319c495789a8400af050b99/screenshots/contact-pg-1.png)
+
 ![Contact Page 2](https://github.com/hafsa274/jobhiring/blob/ab6608f72ec83ae37319c495789a8400af050b99/screenshots/contact-pg-2.png)
 
 ---
 
 ### 💼 Post Job Page
 ![Post Job Page 1](https://github.com/hafsa274/jobhiring/blob/ab6608f72ec83ae37319c495789a8400af050b99/screenshots/postjob-pg-1.png)
+
 ![Post Job Page 2](https://github.com/hafsa274/jobhiring/blob/ab6608f72ec83ae37319c495789a8400af050b99/screenshots/postjob-pg-2.png)
 
 ---
@@ -134,5 +122,7 @@ This project demonstrates the development of a full-stack job portal system with
 This project is open-source and intended for learning only.
 
 ---
+## 🌐 Run Locally
 
-# The app will run at http://localhost:5000
+After setup, access the app at:
+#  http://localhost:5000
