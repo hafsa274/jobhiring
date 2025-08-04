@@ -93,37 +93,33 @@ jobhiring/
 ## 📸 Screenshots
 
 ### 🏠 Home Page
-![Home Page](screenshots/Screenshot%202025-08-04%20215937.png)
-![Home Page 2](screenshots/Screenshot%202025-08-04%20221938.png)
+![Home Page](https://github.com/hafsa274/jobhiring/blob/ab6608f72ec83ae37319c495789a8400af050b99/screenshots/home-page-1.png)
+![Home Page 2](https://github.com/hafsa274/jobhiring/blob/ab6608f72ec83ae37319c495789a8400af050b99/screenshots/home-page-2.png)
+![Home Page 3](https://github.com/hafsa274/jobhiring/blob/ab6608f72ec83ae37319c495789a8400af050b99/screenshots/home-page-3.png)
+![Home Page 4](https://github.com/hafsa274/jobhiring/blob/ab6608f72ec83ae37319c495789a8400af050b99/screenshots/home-page-4.png)
 
 ---
 
 ### ℹ️ About Page
 ![About Page 1](https://github.com/hafsa274/jobhiring/blob/a54356f4815370d77a8ca0d1061e0471ba219376/screenshots/about-pg-1.png)
-![About Page 2](screenshots/Screenshot%202025-08-04%20222017.png)
+![About Page 2](https://github.com/hafsa274/jobhiring/blob/ab6608f72ec83ae37319c495789a8400af050b99/screenshots/about-pg-2.png)
 
 ---
 
 ### 📩 Contact Page
-![Contact Page 1](screenshots/Screenshot%202025-08-04%20222202.png)
-![Contact Page 2](screenshots/Screenshot%202025-08-04%20222240.png)
+![Contact Page 1](https://github.com/hafsa274/jobhiring/blob/ab6608f72ec83ae37319c495789a8400af050b99/screenshots/contact-pg-1.png)
+![Contact Page 2](https://github.com/hafsa274/jobhiring/blob/ab6608f72ec83ae37319c495789a8400af050b99/screenshots/contact-pg-2.png)
 
 ---
 
 ### 💼 Post Job Page
-![Post Job Page 1](screenshots/Screenshot%202025-08-04%20222335.png)
-![Post Job Page 2](screenshots/Screenshot%202025-08-04%20222414.png)
+![Post Job Page 1](https://github.com/hafsa274/jobhiring/blob/ab6608f72ec83ae37319c495789a8400af050b99/screenshots/postjob-pg-1.png)
+![Post Job Page 2](https://github.com/hafsa274/jobhiring/blob/ab6608f72ec83ae37319c495789a8400af050b99/screenshots/postjob-pg-2.png)
 
 ---
 
 ### 🔐 Admin Page
-![Admin Page](screenshots/Screenshot%202025-08-04%20222532.png)
-
----
-
-### 📊 Dashboard View
-![Dashboard](screenshots/Screenshot%202025-08-04%20222627.png)
-![Dashboard 2](screenshots/Screenshot%202025-08-04%20222741.png)
+![Admin Page](https://github.com/hafsa274/jobhiring/blob/ab6608f72ec83ae37319c495789a8400af050b99/screenshots/admin.png)
 
 ---
 
