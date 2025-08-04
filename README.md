@@ -25,7 +25,7 @@ All data is handled by a Node.js + Express backend and stored in a MongoDB datab
 
 ---
 
-## 🛠️ Tech Stack
+##  Tech Stack
 
 | Layer     | Technology              |
 |-----------|--------------------------|
@@ -36,7 +36,7 @@ All data is handled by a Node.js + Express backend and stored in a MongoDB datab
 
 ---
 
-## ⚙️ Setup Guide
+##  Setup Guide
 
 ```bash
 # 1. Clone the repository
@@ -57,7 +57,7 @@ npm start
 ---
 
 
-## 📡 API Endpoints
+##  API Endpoints
 
 | Method | Endpoint            | Purpose                  |
 |--------|---------------------|--------------------------|
@@ -72,9 +72,9 @@ npm start
 
 
 
-## 📸 Screenshots
+##  Screenshots
 
-### 🏠 Home Page
+###  Home Page
 ![Home Page](https://github.com/hafsa274/jobhiring/blob/ab6608f72ec83ae37319c495789a8400af050b99/screenshots/home-page-1.png)
 
 ![Home Page 2](https://github.com/hafsa274/jobhiring/blob/ab6608f72ec83ae37319c495789a8400af050b99/screenshots/home-page-2.png)
@@ -85,44 +85,44 @@ npm start
 
 ---
 
-### ℹ️ About Page
+### About Page
 ![About Page 1](https://github.com/hafsa274/jobhiring/blob/a54356f4815370d77a8ca0d1061e0471ba219376/screenshots/about-pg-1.png)
 
 ![About Page 2](https://github.com/hafsa274/jobhiring/blob/ab6608f72ec83ae37319c495789a8400af050b99/screenshots/about-pg-2.png)
 
 ---
 
-### 📩 Contact Page
+### Contact Page
 ![Contact Page 1](https://github.com/hafsa274/jobhiring/blob/ab6608f72ec83ae37319c495789a8400af050b99/screenshots/contact-pg-1.png)
 
 ![Contact Page 2](https://github.com/hafsa274/jobhiring/blob/ab6608f72ec83ae37319c495789a8400af050b99/screenshots/contact-pg-2.png)
 
 ---
 
-### 💼 Post Job Page
+### Post Job Page
 ![Post Job Page 1](https://github.com/hafsa274/jobhiring/blob/ab6608f72ec83ae37319c495789a8400af050b99/screenshots/postjob-pg-1.png)
 
 ![Post Job Page 2](https://github.com/hafsa274/jobhiring/blob/ab6608f72ec83ae37319c495789a8400af050b99/screenshots/postjob-pg-2.png)
 
 ---
 
-### 🔐 Admin Page
+###  Admin Page
 ![Admin Page](https://github.com/hafsa274/jobhiring/blob/ab6608f72ec83ae37319c495789a8400af050b99/screenshots/admin.png)
 
 ---
 
-## 🎯 Purpose
+##  Purpose
 
 This project demonstrates the development of a full-stack job portal system with real-time form submission, backend processing, and database integration. It showcases how users interact with a frontend interface while administrators manage job data, applications, and messages through a dedicated admin dashboard powered by MongoDB.
 
 ---
 
-## 📄 License
+##  License
 
 This project is open-source and intended for learning only.
 
 ---
-## 🌐 Run Locally
+##  Run Locally
 
 After setup, access the app at:
-#  http://localhost:5000
+ http://localhost:5000
