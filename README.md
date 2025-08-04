@@ -88,41 +88,36 @@ jobhiring/
 
 ---
 
+
+
 ## 📸 Screenshots
 
 ### 🏠 Home Page
 ![Home Page](screenshots/Screenshot%202025-08-04%20215937.png)
-
-![Home Page 2](screenshots/home-page-2.png)
-![Home Page 3](screenshots/home-page-3.png)
-![Home Page 4](screenshots/home-page-4.png)
+![Home Page 2](screenshots/Screenshot%202025-08-04%20221938.png)
 
 ---
 
 ### ℹ️ About Page
-
-![About Page 1](screenshots/about-page-1.png)
-![About Page 2](screenshots/about-page-2.png)
+![About Page 1](screenshots/Screenshot%202025-08-04%20222011.png)
+![About Page 2](screenshots/Screenshot%202025-08-04%20222017.png)
 
 ---
 
 ### 📩 Contact Page
-
-![Contact Page 1](screenshots/contact-page-1.png)
-![Contact Page 2](screenshots/contact-page-2.png)
+![Contact Page 1](screenshots/Screenshot%202025-08-04%20222022.png)
+![Contact Page 2](screenshots/Screenshot%202025-08-04%20222240.png)
 
 ---
 
 ### 💼 Post Job Page
-
-![Post Job Page 1](screenshots/post-job-page-1.png)
-![Post Job Page 2](screenshots/post-job-page-2.png)
+![Post Job Page 1](screenshots/Screenshot%202025-08-04%20222335.png)
+![Post Job Page 2](screenshots/Screenshot%202025-08-04%20222414.png)
 
 ---
 
 ### 🔐 Admin Page
-
-![Admin Page](screenshots/admin-page.png)
+![Admin Page](screenshots/Screenshot%202025-08-04%20222532.png)
 
 ---
 
