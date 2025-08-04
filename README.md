@@ -91,7 +91,7 @@ jobhiring/
 ## 📸 Screenshots
 
 ### 🏠 Home Page
-![Admin Page](screenshots/Screenshot%202025-08-04%20215937.png)
+![Home Page](screenshots/Screenshot%202025-08-04%20215937.png)
 
 ![Home Page 2](screenshots/home-page-2.png)
 ![Home Page 3](screenshots/home-page-3.png)
