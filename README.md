@@ -99,7 +99,7 @@ jobhiring/
 ---
 
 ### ℹ️ About Page
-![About Page 1](screenshots/Screenshot%202025-08-04%20222011.png)
+![About Page 1](https://github.com/hafsa274/jobhiring/blob/a54356f4815370d77a8ca0d1061e0471ba219376/screenshots/about-pg-1.png)
 ![About Page 2](screenshots/Screenshot%202025-08-04%20222017.png)
 
 ---
