@@ -105,7 +105,7 @@ jobhiring/
 ---
 
 ### 📩 Contact Page
-![Contact Page 1](screenshots/Screenshot%202025-08-04%20222022.png)
+![Contact Page 1](screenshots/Screenshot%202025-08-04%20222202.png)
 ![Contact Page 2](screenshots/Screenshot%202025-08-04%20222240.png)
 
 ---
@@ -118,6 +118,12 @@ jobhiring/
 
 ### 🔐 Admin Page
 ![Admin Page](screenshots/Screenshot%202025-08-04%20222532.png)
+
+---
+
+### 📊 Dashboard View
+![Dashboard](screenshots/Screenshot%202025-08-04%20222627.png)
+![Dashboard 2](screenshots/Screenshot%202025-08-04%20222741.png)
 
 ---
 
