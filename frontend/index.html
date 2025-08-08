@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Job Hiring – Curated Tech Jobs for Developers, Designers & Marketers</title>
+  <meta name="description" content="Discover high-quality job opportunities for developers, designers, and marketers. Post a job or find your dream role on Job Hiring." />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  
+
+  <!-- ✅ Navbar -->
+ 
+ <!-- Navbar -->
+  <nav class="navbar">
+    <a href="index.html" class="logo">JobHiring<span class="dot">.</span></a>
+    <ul class="nav-list">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html" aria-current="page">About</a></li>
+     <li><a href="contact.html">Contact</a></li>
+     
+    </ul>
+    <a href="postjob.html" class="post-job">Post a Job</a>
+  </nav>
+  <!-- ✅ Main Content -->
+  <main>
+    <section class="hero" role="region" aria-label="Introduction">
+      <div class="container">
+        <h1>Job Hiring for Developers,<br />Designers, and Marketers</h1>
+        <p>Job Hiring connects top talent with high-quality opportunities across the tech industry.</p>
+      </div>
+    </section>
+
+    <section class="featured-jobs container" aria-label="Featured Jobs">
+  <h2>Featured Jobs</h2>
+  <div class="featured-job-list" aria-live="polite" aria-relevant="additions">
+    
+    <!-- ✅ Featured Job Example -->
+    <div class="job-card">
+      <h3>Senior Frontend Developer</h3>
+      <p><strong>Company:</strong> TechNova Inc.</p>
+      <p><strong>Location:</strong> Remote</p>
+      <p><strong>Type:</strong> Full-time</p>
+    <a href="job.html" class="apply-button" onclick="viewJob('frontend'); return false;">Apply Now</a>
+
+    </div>
+
+  </div>
+</section>
+
+
+    <section class="content-wrapper container">
+      <section class="job-section" id="jobs" role="region" aria-label="Latest Jobs">
+        <h2>Latest Jobs</h2>
+        <div class="job-list" aria-live="polite" aria-relevant="additions">
+          <!-- Dynamic jobs will be inserted here -->
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <!-- ✅ Footer -->
+  <footer role="contentinfo">
+    <div class="container">
+      <p>© 2025 Job Hiring. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  
+<script>
+  function viewJob(jobKey) {
+    localStorage.setItem("selectedJob", jobKey);
+    window.location.href = "job.html";
+  }
+
+  document.querySelector('.post-job').addEventListener('click', () => {
+    window.location.href = 'postjob.html';
+  });
+</script>
+
+</body>
+</html>
+
+

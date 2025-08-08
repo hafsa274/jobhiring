@@ -1,0 +1,1209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard - JobHiring Portal</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+      min-height: 100vh;
+      color: #333;
+    }
+
+    .navbar {
+      background: white;
+      padding: 1rem 0;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      margin-bottom: 2rem;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    .navbar h1 {
+      color: #5e72e4;
+      font-size: 1.8rem;
+      font-weight: 700;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      margin-bottom: 3rem;
+    }
+
+    .stat-card {
+      background: white;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      transition: transform 0.3s ease;
+    }
+
+    .stat-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .stat-number {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: #5e72e4;
+      margin-bottom: 0.5rem;
+    }
+
+    .stat-label {
+      color: #64748b;
+      font-weight: 600;
+    }
+
+    .tabs {
+      display: flex;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+      margin-bottom: 2rem;
+      overflow: hidden;
+    }
+
+    .tab {
+      flex: 1;
+      padding: 1rem 2rem;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      font-weight: 600;
+      color: #64748b;
+      transition: all 0.3s ease;
+    }
+
+    .tab.active {
+      background: #5e72e4;
+      color: white;
+    }
+
+    .tab-content {
+      display: none;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+      padding: 2rem;
+    }
+
+    .tab-content.active {
+      display: block;
+    }
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2rem;
+      padding-bottom: 1rem;
+      border-bottom: 2px solid #f1f5f9;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 600;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: all 0.3s ease;
+    }
+
+    .btn-primary {
+      background: #5e72e4;
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background: #4c63d2;
+      transform: translateY(-2px);
+    }
+
+    .btn-secondary {
+      background: #64748b;
+      color: white;
+    }
+
+    .btn-danger {
+      background: #ef4444;
+      color: white;
+    }
+
+    .btn-danger:hover {
+      background: #dc2626;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1rem;
+    }
+
+    th, td {
+      padding: 1rem;
+      text-align: left;
+      border-bottom: 1px solid #e2e8f0;
+    }
+
+    th {
+      background: #f8fafc;
+      font-weight: 600;
+      color: #374151;
+    }
+
+    tr:hover {
+      background: #f8fafc;
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+    }
+
+    .modal-content {
+      background-color: white;
+      margin: 5% auto;
+      padding: 0;
+      border-radius: 12px;
+      width: 90%;
+      max-width: 600px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+    }
+
+    .modal-header {
+      padding: 1.5rem 2rem;
+      border-bottom: 1px solid #e2e8f0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #f8fafc;
+      border-radius: 12px 12px 0 0;
+    }
+
+    .modal-header h3 {
+      color: #374151;
+      font-size: 1.25rem;
+    }
+
+    .close {
+      color: #64748b;
+      font-size: 28px;
+      font-weight: bold;
+      cursor: pointer;
+      border: none;
+      background: none;
+    }
+
+    .close:hover {
+      color: #374151;
+    }
+
+    .modal-body {
+      padding: 2rem;
+    }
+
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+      color: #374151;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 0.8rem 1rem;
+      background: #f9fafb;
+      border: 1px solid #d1d5db;
+      border-radius: 8px;
+      color: #374151;
+      font-size: 0.9rem;
+      transition: all 0.3s ease;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: #5e72e4;
+      box-shadow: 0 0 0 3px rgba(94, 114, 228, 0.1);
+      background: white;
+    }
+
+    .message {
+      position: fixed;
+      top: 2rem;
+      right: 2rem;
+      padding: 1rem 1.5rem;
+      border-radius: 8px;
+      font-weight: 600;
+      z-index: 3000;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+      animation: slideInRight 0.4s ease;
+    }
+
+    @keyframes slideInRight {
+      from {
+        transform: translateX(100%);
+        opacity: 0;
+      }
+      to {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
+
+    .message.success {
+      background: #10b981;
+      color: white;
+    }
+
+    .message.error {
+      background: #ef4444;
+      color: white;
+    }
+
+    .job-type-badge {
+      background: #e1e7ff;
+      color: #5e72e4;
+      padding: 0.3rem 0.8rem;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+
+    .empty-state {
+      text-align: center;
+      padding: 3rem;
+      color: #64748b;
+    }
+
+    .empty-state i {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      opacity: 0.5;
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        padding: 1rem;
+      }
+
+      .stats {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+      }
+
+      .tabs {
+        flex-direction: column;
+      }
+
+      .section-header {
+        flex-direction: column;
+        gap: 1rem;
+        align-items: stretch;
+      }
+
+      table {
+        font-size: 0.9rem;
+      }
+
+      th, td {
+        padding: 0.5rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav class="navbar">
+    <div class="container">
+      <h1><i class="fas fa-chart-line"></i> Admin Dashboard</h1>
+    </div>
+  </nav>
+
+  <div class="container">
+    <div class="stats">
+      <div class="stat-card">
+        <div class="stat-number" id="jobs-count">0</div>
+        <div class="stat-label"><i class="fas fa-briefcase"></i> Total Jobs</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number" id="contacts-count">0</div>
+        <div class="stat-label"><i class="fas fa-envelope"></i> Contact Messages</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number" id="applications-count">0</div>
+        <div class="stat-label"><i class="fas fa-user-tie"></i> Job Applications</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number" id="admin-data-count">0</div>
+        <div class="stat-label"><i class="fas fa-database"></i> Admin Data Entries</div>
+      </div>
+    </div>
+
+    <div class="tabs">
+      <button class="tab active" onclick="switchTab('jobs')">
+        <i class="fas fa-briefcase"></i> Jobs Management
+      </button>
+      <button class="tab" onclick="switchTab('contacts')">
+        <i class="fas fa-envelope"></i> Contact Messages
+      </button>
+      <button class="tab" onclick="switchTab('applications')">
+        <i class="fas fa-user-tie"></i> Job Applications
+      </button>
+      <button class="tab" onclick="switchTab('admin-data')">
+        <i class="fas fa-database"></i> Admin Data
+      </button>
+    </div>
+
+    <!-- Jobs Tab -->
+    <div id="jobs-tab" class="tab-content active">
+      <div class="section-header">
+        <h2><i class="fas fa-briefcase"></i> Jobs Management</h2>
+        <button class="btn btn-primary" onclick="openJobModal()">
+          <i class="fas fa-plus"></i> Add New Job
+        </button>
+      </div>
+
+      <table id="jobs-table">
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Company</th>
+            <th>Location</th>
+            <th>Type</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Jobs will be loaded here -->
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Contacts Tab -->
+    <div id="contacts-tab" class="tab-content">
+      <div class="section-header">
+        <h2><i class="fas fa-envelope"></i> Contact Messages</h2>
+      </div>
+
+      <table id="contacts-table">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Subject</th>
+            <th>Date</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Contacts will be loaded here -->
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Applications Tab -->
+    <div id="applications-tab" class="tab-content">
+      <div class="section-header">
+        <h2><i class="fas fa-user-tie"></i> Job Applications</h2>
+      </div>
+
+      <table id="applications-table">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Job Title</th>
+            <th>Phone</th>
+            <th>Date</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Applications will be loaded here -->
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Admin Data Tab -->
+    <div id="admin-data-tab" class="tab-content">
+      <div class="section-header">
+        <h2><i class="fas fa-database"></i> Admin Data</h2>
+        <button class="btn btn-primary" onclick="openAdminDataModal()">
+          <i class="fas fa-plus"></i> Add New Data
+        </button>
+      </div>
+
+      <table id="admin-data-table">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Date</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Admin data will be loaded here -->
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Job Modal -->
+  <div id="job-modal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 id="job-modal-title"><i class="fas fa-briefcase"></i> Add New Job</h3>
+        <button class="close" onclick="closeJobModal()">&times;</button>
+      </div>
+
+      <div class="modal-body">
+        <form id="job-form">
+          <div class="form-group">
+            <label for="job-title"><i class="fas fa-heading"></i> Job Title *</label>
+            <input type="text" id="job-title" name="title" required />
+          </div>
+
+          <div class="form-group">
+            <label for="job-company"><i class="fas fa-building"></i> Company *</label>
+            <input type="text" id="job-company" name="company" required />
+          </div>
+
+          <div class="form-group">
+            <label for="job-location"><i class="fas fa-map-marker-alt"></i> Location *</label>
+            <input type="text" id="job-location" name="location" required />
+          </div>
+
+          <div class="form-group">
+            <label for="job-type"><i class="fas fa-clock"></i> Job Type *</label>
+            <select id="job-type" name="type" required>
+              <option value="">Select job type</option>
+              <option value="Full-time">Full-time</option>
+              <option value="Part-time">Part-time</option>
+              <option value="Contract">Contract</option>
+              <option value="Freelance">Freelance</option>
+              <option value="Internship">Internship</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="job-description"><i class="fas fa-align-left"></i> Description *</label>
+            <textarea id="job-description" name="description" rows="4" required></textarea>
+          </div>
+
+          <div class="form-group">
+            <label for="job-logo"><i class="fas fa-image"></i> Company Logo URL</label>
+            <input type="url" id="job-logo" name="logo" />
+          </div>
+
+          <div class="form-group">
+            <label for="job-apply-url"><i class="fas fa-link"></i> Apply URL</label>
+            <input type="url" id="job-apply-url" name="applyUrl" />
+          </div>
+
+          <div class="form-group">
+            <label for="job-key"><i class="fas fa-key"></i> Job Key (unique identifier) *</label>
+            <input type="text" id="job-key" name="key" required />
+          </div>
+
+          <div style="display: flex; gap: 1rem; justify-content: flex-end; margin-top: 1.5rem;">
+            <button type="button" class="btn btn-secondary" onclick="closeJobModal()">
+              <i class="fas fa-times"></i> Cancel
+            </button>
+            <button type="submit" class="btn btn-primary">
+              <i class="fas fa-save"></i> Save Job
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Contact Modal -->
+  <div id="contact-modal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3><i class="fas fa-envelope"></i> Contact Message Details</h3>
+        <button class="close" onclick="closeContactModal()">&times;</button>
+      </div>
+
+      <div class="modal-body">
+        <div id="contact-details">
+          <!-- Contact details will be loaded here -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Application Modal -->
+  <div id="application-modal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3><i class="fas fa-user-tie"></i> Application Details</h3>
+        <button class="close" onclick="closeApplicationModal()">&times;</button>
+      </div>
+
+      <div class="modal-body">
+        <div id="application-details">
+          <!-- Application details will be loaded here -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Admin Data Modal -->
+  <div id="admin-data-modal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 id="admin-data-modal-title"><i class="fas fa-database"></i> Add New Admin Data</h3>
+        <button class="close" onclick="closeAdminDataModal()">&times;</button>
+      </div>
+
+      <div class="modal-body">
+        <form id="admin-data-form">
+          <div class="form-group">
+            <label for="admin-data-name"><i class="fas fa-heading"></i> Name *</label>
+            <input type="text" id="admin-data-name" name="name" required />
+          </div>
+
+          <div class="form-group">
+            <label for="admin-data-description"><i class="fas fa-align-left"></i> Description *</label>
+            <textarea id="admin-data-description" name="description" rows="4" required></textarea>
+          </div>
+
+          <div style="display: flex; gap: 1rem; justify-content: flex-end; margin-top: 1.5rem;">
+            <button type="button" class="btn btn-secondary" onclick="closeAdminDataModal()">
+              <i class="fas fa-times"></i> Cancel
+            </button>
+            <button type="submit" class="btn btn-primary">
+              <i class="fas fa-save"></i> Save Data
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    let currentEditingJobId = null;
+    let currentEditingAdminDataId = null;
+    let jobs = [];
+    let contacts = [];
+    let applications = [];
+    let adminData = [];
+
+    // Initialize the dashboard
+    document.addEventListener('DOMContentLoaded', function() {
+      console.log('Admin dashboard loaded');
+      
+      // Add null checks for critical elements
+      if (document.getElementById('jobs-count') && 
+          document.getElementById('contacts-count') && 
+          document.getElementById('applications-count')) {
+        loadAllData();
+      } else {
+        console.error('Required DOM elements not found');
+      }
+    });
+
+    function loadAllData() {
+      fetchJobs();
+      fetchContacts();
+      fetchApplications();
+      fetchAdminData();
+    }
+
+    function switchTab(tabName) {
+      // Hide all tabs
+      document.querySelectorAll('.tab-content').forEach(tab => {
+        tab.classList.remove('active');
+      });
+      document.querySelectorAll('.tab').forEach(tab => {
+        tab.classList.remove('active');
+      });
+
+      // Show selected tab
+      document.getElementById(tabName + '-tab').classList.add('active');
+      event.target.classList.add('active');
+    }
+
+    // Jobs Management
+    async function fetchJobs() {
+      try {
+        const response = await fetch('/api/jobs');
+        if (response.ok) {
+          jobs = await response.json();
+        } else {
+          jobs = [];
+        }
+        displayJobs(jobs);
+        updateStats();
+      } catch (error) {
+        console.error('Error loading jobs:', error);
+        jobs = [];
+        displayJobs([]);
+        updateStats();
+      }
+    }
+
+    function displayJobs(jobsData) {
+      const tbody = document.querySelector('#jobs-table tbody');
+      if (!tbody) return;
+
+      tbody.innerHTML = '';
+
+      if (jobsData.length === 0) {
+        tbody.innerHTML = `
+          <tr>
+            <td colspan="5" class="empty-state">
+              <i class="fas fa-briefcase"></i>
+              <div>No jobs available</div>
+            </td>
+          </tr>
+        `;
+        return;
+      }
+
+      jobsData.forEach(job => {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+          <td>${job.title || 'N/A'}</td>
+          <td>${job.company || 'N/A'}</td>
+          <td>${job.location || 'N/A'}</td>
+          <td><span class="job-type-badge">${job.type || 'N/A'}</span></td>
+          <td>
+            <button class="btn btn-secondary" onclick="editJob('${job._id}')" style="margin-right: 0.5rem;">
+              <i class="fas fa-edit"></i> Edit
+            </button>
+            <button class="btn btn-danger" onclick="deleteJob('${job._id}')">
+              <i class="fas fa-trash"></i> Delete
+            </button>
+          </td>
+        `;
+        tbody.appendChild(row);
+      });
+    }
+
+    // Contacts Management
+    async function fetchContacts() {
+      try {
+        const response = await fetch('/api/contacts');
+        if (response.ok) {
+          contacts = await response.json();
+        } else {
+          contacts = [];
+        }
+        displayContacts(contacts);
+        updateStats();
+      } catch (error) {
+        console.error('Error loading contacts:', error);
+        contacts = [];
+        displayContacts([]);
+        updateStats();
+      }
+    }
+
+    function displayContacts(contactsData) {
+      const tbody = document.querySelector('#contacts-table tbody');
+      if (!tbody) return;
+
+      tbody.innerHTML = '';
+
+      if (contactsData.length === 0) {
+        tbody.innerHTML = `
+          <tr>
+            <td colspan="5" class="empty-state">
+              <i class="fas fa-envelope"></i>
+              <div>No contact messages</div>
+            </td>
+          </tr>
+        `;
+        return;
+      }
+
+      contactsData.forEach(contact => {
+        const row = document.createElement('tr');
+        const date = new Date(contact.createdAt).toLocaleDateString();
+        row.innerHTML = `
+          <td>${contact.name || 'N/A'}</td>
+          <td>${contact.email || 'N/A'}</td>
+          <td>${contact.subject || 'N/A'}</td>
+          <td>${date}</td>
+          <td>
+            <button class="btn btn-secondary" onclick="viewContact('${contact._id}')" style="margin-right: 0.5rem;">
+              <i class="fas fa-eye"></i> View
+            </button>
+            <button class="btn btn-danger" onclick="deleteContact('${contact._id}')">
+              <i class="fas fa-trash"></i> Delete
+            </button>
+          </td>
+        `;
+        tbody.appendChild(row);
+      });
+    }
+
+    // Applications Management
+    async function fetchApplications() {
+      try {
+        const response = await fetch('/api/applications');
+        if (response.ok) {
+          applications = await response.json();
+        } else {
+          applications = [];
+        }
+        displayApplications(applications);
+        updateStats();
+      } catch (error) {
+        console.error('Error loading applications:', error);
+        applications = [];
+        displayApplications([]);
+        updateStats();
+      }
+    }
+
+    function displayApplications(applicationsData) {
+      const tbody = document.querySelector('#applications-table tbody');
+      if (!tbody) return;
+
+      tbody.innerHTML = '';
+
+      if (applicationsData.length === 0) {
+        tbody.innerHTML = `
+          <tr>
+            <td colspan="6" class="empty-state">
+              <i class="fas fa-user-tie"></i>
+              <div>No job applications</div>
+            </td>
+          </tr>
+        `;
+        return;
+      }
+
+      applicationsData.forEach(application => {
+        const row = document.createElement('tr');
+        const date = new Date(application.createdAt).toLocaleDateString();
+        row.innerHTML = `
+          <td>${application.name || 'N/A'}</td>
+          <td>${application.email || 'N/A'}</td>
+          <td>${application.jobTitle || 'N/A'}</td>
+          <td>${application.phone || 'N/A'}</td>
+          <td>${date}</td>
+          <td>
+            <button class="btn btn-secondary" onclick="viewApplication('${application._id}')" style="margin-right: 0.5rem;">
+              <i class="fas fa-eye"></i> View
+            </button>
+            <button class="btn btn-danger" onclick="deleteApplication('${application._id}')">
+              <i class="fas fa-trash"></i> Delete
+            </button>
+          </td>
+        `;
+        tbody.appendChild(row);
+      });
+    }
+
+    // Admin Data Management
+    async function fetchAdminData() {
+      try {
+        const response = await fetch('/api/admin-data');
+        if (response.ok) {
+          adminData = await response.json();
+        } else {
+          adminData = [];
+        }
+        displayAdminData(adminData);
+        updateStats();
+      } catch (error) {
+        console.error('Error loading admin data:', error);
+        adminData = [];
+        displayAdminData([]);
+        updateStats();
+      }
+    }
+
+    function displayAdminData(adminData) {
+      const tbody = document.querySelector('#admin-data-table tbody');
+      if (!tbody) return;
+
+      tbody.innerHTML = '';
+
+      if (adminData.length === 0) {
+        tbody.innerHTML = `
+          <tr>
+            <td colspan="4" class="empty-state">
+              <i class="fas fa-database"></i>
+              <div>No admin data available</div>
+            </td>
+          </tr>
+        `;
+        return;
+      }
+
+      adminData.forEach(data => {
+        const date = new Date(data.createdAt).toLocaleDateString();
+        const row = document.createElement('tr');
+        row.innerHTML = `
+          <td>${data.name || 'N/A'}</td>
+          <td>${data.description || 'N/A'}</td>
+          <td>${date}</td>
+          <td>
+            <button class="btn btn-secondary" onclick="editAdminData('${data._id}')" style="margin-right: 0.5rem;">
+              <i class="fas fa-edit"></i> Edit
+            </button>
+            <button class="btn btn-danger" onclick="deleteAdminData('${data._id}')">
+              <i class="fas fa-trash"></i> Delete
+            </button>
+          </td>
+        `;
+        tbody.appendChild(row);
+      });
+    }
+
+    function updateStats() {
+      const jobsCountEl = document.getElementById('jobs-count');
+      const contactsCountEl = document.getElementById('contacts-count');
+      const applicationsCountEl = document.getElementById('applications-count');
+      const adminDataCountEl = document.getElementById('admin-data-count');
+      
+      if (jobsCountEl) jobsCountEl.textContent = jobs.length;
+      if (contactsCountEl) contactsCountEl.textContent = contacts.length;
+      if (applicationsCountEl) applicationsCountEl.textContent = applications.length;
+      if (adminDataCountEl) adminDataCountEl.textContent = adminData.length;
+    }
+
+    // Job Modal Functions
+    function openJobModal(jobId = null) {
+      currentEditingJobId = jobId;
+      const modal = document.getElementById('job-modal');
+      const title = document.getElementById('job-modal-title');
+      const form = document.getElementById('job-form');
+
+      if (jobId) {
+        title.innerHTML = '<i class="fas fa-edit"></i> Edit Job';
+        const job = jobs.find(j => j._id === jobId);
+        if (job) {
+          document.getElementById('job-title').value = job.title || '';
+          document.getElementById('job-company').value = job.company || '';
+          document.getElementById('job-location').value = job.location || '';
+          document.getElementById('job-type').value = job.type || '';
+          document.getElementById('job-description').value = job.description || '';
+          document.getElementById('job-logo').value = job.logo || '';
+          document.getElementById('job-apply-url').value = job.applyUrl || '';
+          document.getElementById('job-key').value = job.key || '';
+        }
+      } else {
+        title.innerHTML = '<i class="fas fa-plus"></i> Add New Job';
+        form.reset();
+      }
+
+      modal.style.display = 'block';
+    }
+
+    function closeJobModal() {
+      document.getElementById('job-modal').style.display = 'none';
+      currentEditingJobId = null;
+    }
+
+    function editJob(jobId) {
+      openJobModal(jobId);
+    }
+
+    async function deleteJob(jobId) {
+      if (!confirm('Are you sure you want to delete this job?')) return;
+
+      try {
+        const response = await fetch(`/api/jobs/${jobId}`, {
+          method: 'DELETE'
+        });
+
+        if (response.ok) {
+          showMessage('Job deleted successfully!', 'success');
+          fetchJobs();
+        } else {
+          showMessage('Error deleting job', 'error');
+        }
+      } catch (error) {
+        showMessage('Error deleting job', 'error');
+      }
+    }
+
+    // Contact Functions
+    function viewContact(contactId) {
+      const contact = contacts.find(c => c._id === contactId);
+      if (!contact) return;
+
+      document.getElementById('contact-details').innerHTML = `
+        <div class="form-group">
+          <label><strong>Name:</strong></label>
+          <p>${contact.name || 'N/A'}</p>
+        </div>
+        <div class="form-group">
+          <label><strong>Email:</strong></label>
+          <p>${contact.email || 'N/A'}</p>
+        </div>
+        <div class="form-group">
+          <label><strong>Subject:</strong></label>
+          <p>${contact.subject || 'N/A'}</p>
+        </div>
+        <div class="form-group">
+          <label><strong>Message:</strong></label>
+          <p>${contact.message || 'N/A'}</p>
+        </div>
+        <div class="form-group">
+          <label><strong>Date:</strong></label>
+          <p>${new Date(contact.createdAt).toLocaleString()}</p>
+        </div>
+      `;
+
+      document.getElementById('contact-modal').style.display = 'block';
+    }
+
+    function closeContactModal() {
+      document.getElementById('contact-modal').style.display = 'none';
+    }
+
+    async function deleteContact(contactId) {
+      if (!confirm('Are you sure you want to delete this contact message?')) return;
+
+      try {
+        const response = await fetch(`/api/contacts/${contactId}`, {
+          method: 'DELETE'
+        });
+
+        if (response.ok) {
+          showMessage('Contact deleted successfully!', 'success');
+          fetchContacts();
+        } else {
+          showMessage('Error deleting contact', 'error');
+        }
+      } catch (error) {
+        showMessage('Error deleting contact', 'error');
+      }
+    }
+
+    // Application Functions
+    function viewApplication(applicationId) {
+      const application = applications.find(a => a._id === applicationId);
+      if (!application) return;
+
+      document.getElementById('application-details').innerHTML = `
+        <div class="form-group">
+          <label><strong>Name:</strong></label>
+          <p>${application.name || 'N/A'}</p>
+        </div>
+        <div class="form-group">
+          <label><strong>Email:</strong></label>
+          <p>${application.email || 'N/A'}</p>
+        </div>
+        <div class="form-group">
+          <label><strong>Phone:</strong></label>
+          <p>${application.phone || 'N/A'}</p>
+        </div>
+        <div class="form-group">
+          <label><strong>Job Title:</strong></label>
+          <p>${application.jobTitle || 'N/A'}</p>
+        </div>
+        <div class="form-group">
+          <label><strong>Cover Letter:</strong></label>
+          <p>${application.coverLetter || 'N/A'}</p>
+        </div>
+        <div class="form-group">
+          <label><strong>Resume URL:</strong></label>
+          <p>${application.resumeUrl ? `<a href="${application.resumeUrl}" target="_blank">View Resume</a>` : 'N/A'}</p>
+        </div>
+        <div class="form-group">
+          <label><strong>Date:</strong></label>
+          <p>${new Date(application.createdAt).toLocaleString()}</p>
+        </div>
+      `;
+
+      document.getElementById('application-modal').style.display = 'block';
+    }
+
+    function closeApplicationModal() {
+      document.getElementById('application-modal').style.display = 'none';
+    }
+
+    async function deleteApplication(applicationId) {
+      if (!confirm('Are you sure you want to delete this application?')) return;
+
+      try {
+        const response = await fetch(`/api/applications/${applicationId}`, {
+          method: 'DELETE'
+        });
+
+        if (response.ok) {
+          showMessage('Application deleted successfully!', 'success');
+          fetchApplications();
+        } else {
+          showMessage('Error deleting application', 'error');
+        }
+      } catch (error) {
+        showMessage('Error deleting application', 'error');
+      }
+    }
+
+    // Admin Data Functions
+    function openAdminDataModal(dataId = null) {
+      currentEditingAdminDataId = dataId;
+      const modal = document.getElementById('admin-data-modal');
+      const title = document.getElementById('admin-data-modal-title');
+      const form = document.getElementById('admin-data-form');
+
+      if (dataId) {
+        title.innerHTML = '<i class="fas fa-edit"></i> Edit Admin Data';
+        const data = adminData.find(d => d._id === dataId);
+        if (data) {
+          document.getElementById('admin-data-name').value = data.name || '';
+          document.getElementById('admin-data-description').value = data.description || '';
+        }
+      } else {
+        title.innerHTML = '<i class="fas fa-plus"></i> Add New Admin Data';
+        form.reset();
+      }
+
+      modal.style.display = 'block';
+    }
+
+    function closeAdminDataModal() {
+      document.getElementById('admin-data-modal').style.display = 'none';
+      currentEditingAdminDataId = null;
+    }
+
+    function editAdminData(dataId) {
+      openAdminDataModal(dataId);
+    }
+
+    async function deleteAdminData(dataId) {
+      if (!confirm('Are you sure you want to delete this admin data?')) return;
+
+      try {
+        const response = await fetch(`/api/admin-data/${dataId}`, {
+          method: 'DELETE'
+        });
+
+        if (response.ok) {
+          showMessage('Admin data deleted successfully!', 'success');
+          fetchAdminData();
+        } else {
+          showMessage('Error deleting admin data', 'error');
+        }
+      } catch (error) {
+        showMessage('Error deleting admin data', 'error');
+      }
+    }
+
+    // Form Submission
+    const jobForm = document.getElementById('job-form');
+    if (jobForm) {
+      jobForm.addEventListener('submit', async function(e) {
+        e.preventDefault();
+
+        const formData = new FormData(e.target);
+        const jobData = Object.fromEntries(formData.entries());
+
+        try {
+          const url = currentEditingJobId ? `/api/jobs/${currentEditingJobId}` : '/api/jobs';
+          const method = currentEditingJobId ? 'PUT' : 'POST';
+
+          const response = await fetch(url, {
+            method: method,
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(jobData)
+          });
+
+          if (response.ok) {
+            showMessage('Job saved successfully!', 'success');
+            closeJobModal();
+            fetchJobs();
+          } else {
+            showMessage('Failed to save job', 'error');
+          }
+        } catch (error) {
+          showMessage('Error saving job', 'error');
+        }
+      });
+    }
+
+    // Admin Data Form Submission
+    const adminDataForm = document.getElementById('admin-data-form');
+    if (adminDataForm) {
+      adminDataForm.addEventListener('submit', async function(e) {
+        e.preventDefault();
+
+        const formData = new FormData(e.target);
+        const adminDataPayload = Object.fromEntries(formData.entries());
+
+        try {
+          const url = currentEditingAdminDataId ? `/api/admin-data/${currentEditingAdminDataId}` : '/api/admin-data';
+          const method = currentEditingAdminDataId ? 'PUT' : 'POST';
+
+          const response = await fetch(url, {
+            method: method,
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(adminDataPayload)
+          });
+
+          if (response.ok) {
+            showMessage('Admin data saved successfully!', 'success');
+            closeAdminDataModal();
+            fetchAdminData();
+          } else {
+            showMessage('Failed to save admin data', 'error');
+          }
+        } catch (error) {
+          showMessage('Error saving admin data', 'error');
+        }
+      });
+    }
+
+    // Utility function to show messages
+    function showMessage(message, type) {
+      const msgDiv = document.createElement('div');
+      msgDiv.className = `message ${type}`;
+      msgDiv.textContent = message;
+      document.body.appendChild(msgDiv);
+      setTimeout(() => {
+        msgDiv.remove();
+      }, 4000);
+    }
+  </script>
+</body>
+</html>

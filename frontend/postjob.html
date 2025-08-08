@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Post a Job</title>
+   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+  * {
+  box-sizing: border-box;
+}
+
+ body {
+  margin: 0;
+  font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f9f9fb;
+  color: #333;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 24px;
+  background-color: #f1f3ff; /* fixed typo */
+  border-bottom: 1px solid #e0e0e0;
+  position: sticky;
+  top: 0;
+  z-index: 10000; /* higher z-index to stay above other content */
+  transition: all 0.3s ease;
+}
+
+.navbar-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  transition: all 0.3s ease;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: 700;
+  text-decoration: none;
+  color: #2b2f75;
+  transition: all 0.3s ease;
+}
+
+.logo .dot {
+  color: #5e72e4;
+  transition: all 0.3s ease;
+}
+
+.nav-list {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-list li a {
+  text-decoration: none;
+  color: #2b2f75;
+  font-weight: 500;
+  font-size: 0.95rem;
+  padding: 6px 10px;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.nav-list li a:hover {
+  background-color: #eaefff;
+  color: #3544b1;
+}
+
+
+.post-job {
+  background-color: #5e72e4;
+  color: #fff;
+  border: none;
+  padding: 10px 26px;
+  border-radius: 50px; /* Oval shape */
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  display: inline-block;
+  box-shadow: 0 4px 12px rgba(94, 114, 228, 0.2);
+}
+
+.post-job:hover,
+.post-job:focus {
+  background-color: #324cdd;
+  transform: scale(1.05);
+  box-shadow: 0 6px 18px rgba(50, 76, 221, 0.35);
+  text-decoration: none;
+  outline: none;
+}
+
+    header {
+      text-align: center;
+      padding: 60px 20px 30px;
+      background: linear-gradient(to right, #eaf1ff, #f5f9ff);
+      animation: fadeInDown 1s ease-out;
+    }
+
+    h1 {
+      font-size: 2.8rem;
+      margin-bottom: 10px;
+      color: #002d80;
+    }
+
+    p {
+      color: #6b6b84;
+      margin: 5px 0;
+      font-size: 1.05rem;
+    }
+
+    .tabs {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      margin: 20px 0;
+      border-bottom: 1px solid #ddd;
+    }
+
+    .tab {
+      padding: 10px 0;
+      font-weight: bold;
+      cursor: pointer;
+      color: #6b6b84;
+      transition: all .3s ease;
+    }
+
+    .tab.active {
+      color: #005bff;
+      border-bottom: 2px solid #005bff;
+    }
+
+    .container {
+      display: flex;
+      max-width: 1200px;
+      margin: auto;
+      gap: 30px;
+      padding: 20px;
+      animation: fadeInUp 1s ease-in;
+    }
+
+    .sidebar {
+      flex: 0.4;
+      position: sticky;
+      top: 20px;
+      transition: all 0.4s ease;
+    }
+    .sidebar {
+  flex: 0.4;
+  position: sticky;
+  top: 30px;
+  padding-right: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+  user-select: none;
+}
+
+.icon-box {
+  background-color: #eef3ff;
+  width: 56px;
+  height: 56px;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #005bff;
+  margin-bottom: 10px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.icon-box svg {
+  width: 28px;
+  height: 28px;
+  stroke-width: 2.5;
+}
+
+.icon-box:hover {
+  background-color: #d6e4ff;
+  transform: scale(1.1);
+}
+
+.section-title {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #002d80;
+  margin-bottom: 6px;
+  transition: color 0.3s ease;
+}
+
+.section-desc {
+  font-size: 1rem;
+  color: #5a5a7a;
+  line-height: 1.4;
+  max-width: 280px;
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    position: static;
+    padding-right: 0;
+    margin-bottom: 30px;
+  }
+}
+
+    .icon-box {
+      background: #eef3ff;
+      padding: 12px;
+      border-radius: 10px;
+      width: 60px;
+      text-align: center;
+      margin-bottom: 15px;
+      transition: transform .3s;
+    }
+
+    .icon-box:hover {
+      transform: scale(1.05);
+    }
+
+    .section-title {
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-bottom: 5px;
+      transition: color .3s, transform 0.3s ease;
+    }
+
+    .section-title.active {
+      color: #005bff;
+      transform: translateX(10px);
+    }
+
+    .section-desc {
+      font-size: 0.95rem;
+      color: #777;
+      margin-bottom: 30px;
+      transition: all 0.3s ease;
+    }
+
+    form {
+      flex: 1;
+      background: #fff;
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, .05);
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    section {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .form-row {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-bottom: 0;
+    }
+
+    .form-group {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      animation: fadeIn 1s ease forwards;
+    }
+
+    label {
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: #2b2f75;
+      transition: all 0.3s ease;
+    }
+
+    input, textarea, select {
+      padding: 16px;
+      border-radius: 50px;
+      border: 1px solid #ddd;
+      font-size: 1rem;
+      outline: none;
+      transition: border-color .3s, box-shadow .3s, transform .3s;
+    }
+
+    input:focus, textarea:focus, select:focus {
+      border-color: #005bff;
+      box-shadow: 0 0 0 2px #e1eaff;
+      background: #f9fbff;
+      transform: scale(1.01);
+    }
+
+    textarea {
+      min-height: 160px;
+      resize: vertical;
+      border-radius: 20px;
+    }
+
+    button[type="submit"] {
+      align-self: flex-start;
+      background: #005bff;
+      color: #fff;
+      padding: 16px 48px;
+      font-size: 1.1rem;
+      font-weight: 700;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: background .3s, box-shadow .3s, transform .2s;
+      margin-top: 10px;
+    }
+
+    button[type="submit"]:hover {
+      background: #003ea6;
+      box-shadow: 0 10px 30px rgba(0, 62, 166, .7);
+      transform: translateY(-3px);
+    }
+
+    button[type="submit"]:active {
+      transform: translateY(0);
+      box-shadow: none;
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        flex-direction: column;
+        padding: 10px;
+      }
+
+      .sidebar {
+        position: static;
+      }
+
+      form {
+        padding: 20px;
+      }
+    }
+
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-40px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(40px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+
+
+  <nav class="navbar">
+    <a href="index.html" class="logo">JobHiring<span class="dot">.</span></a>
+    <ul class="nav-list">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html" aria-current="page">About</a></li>
+     <li><a href="contact.html">Contact</a></li>
+     
+    </ul>
+    <a href="postjob.html" class="post-job">Post a Job</a>
+  </nav>
+   
+  <header>
+  <h1>Post a Job Today</h1>
+  <p>Fill in the job details below. Paid jobs require a valid order ID/payment.</p>
+</header>
+
+
+<div class="container">
+<aside class="sidebar">
+  <div class="icon-box" aria-hidden="true">
+    <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" >
+      <path stroke-linecap="round" stroke-linejoin="round" d="M12 12c2.21 0 4-1.79 4-4S14.21 4 12 4s-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+    </svg>
+  </div>
+  <div class="section-title" id="title-1">1. Job poster information</div>
+  <div class="section-desc">Provide your name and email so we can contact you about your job posting.</div>
+
+  <div class="icon-box" aria-hidden="true">
+    <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" >
+      <path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12c0 4.97-4.03 9-9 9s-9-4.03-9-9 4.03-9 9-9 9 4.03 9 9z"/>
+    </svg>
+  </div>
+  <div class="section-title" id="title-2">2. Job information</div>
+  <div class="section-desc">Enter the job title, department, type, location, and salary if applicable.</div>
+
+  <div class="icon-box" aria-hidden="true">
+    <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" >
+      <path stroke-linecap="round" stroke-linejoin="round" d="M3 21h18M9 10h6m-6 4h6m-3-14a9 9 0 100 18 9 9 0 000-18z"/>
+    </svg>
+  </div>
+  <div class="section-title" id="title-3">3. Company information</div>
+  <div class="section-desc">Tell us about your company including website, industry, and social media links.</div>
+</aside>
+  <form id="job-form">
+    <section data-title="title-1">
+      <div class="form-row">
+        <div class="form-group"><label>Full name</label><input type="text" name="posterName" placeholder="Jon Doe" required></div>
+        <div class="form-group"><label>Email address</label><input type="email" name="posterEmail" placeholder="jon.doe@example.com" required></div>
+      </div>
+    </section>
+
+    <section data-title="title-2">
+      <div class="form-row">
+        <div class="form-group"><label>Job title *</label><input type="text" name="title" placeholder="Software Engineer" required></div>
+        <div class="form-group"><label>Department</label><input type="text" name="department" placeholder="Engineering"></div>
+      </div>
+      <div class="form-row">
+        <div class="form-group"><label>Type *</label><input type="text" name="type" placeholder="Full-time" required></div>
+        <div class="form-group"><label>Location *</label><input type="text" name="location" placeholder="Remote / San Francisco" required></div>
+      </div>
+      <div class="form-row">
+        <div class="form-group"><label>Salary</label><input type="text" name="salary" placeholder="$100,000 - $120,000"></div>
+        <div class="form-group">
+          <label><input type="checkbox" name="showSalary" checked> Show salary on post</label>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group" style="width:100%">
+          <label>Job description *</label>
+          <textarea name="description" placeholder="We are seeking a passionate engineer to work on our core product..." required></textarea>
+        </div>
+      </div>
+    </section>
+
+    <section data-title="title-3">
+      <div class="form-row">
+        <div class="form-group"><label>Company name *</label><input type="text" name="company" placeholder="TechNova Inc." required></div>
+        <div class="form-group"><label>Company website</label><input type="url" name="website" placeholder="https://technova.com"></div>
+      </div>
+      <div class="form-row">
+        <div class="form-group"><label>Industry</label><input type="text" name="industry" placeholder="Information Technology"></div>
+        <div class="form-group"><label>Facebook page</label><input type="url" name="facebook" placeholder="https://facebook.com/technova"></div>
+      </div>
+      <div class="form-row">
+        <div class="form-group"><label>Twitter</label><input type="url" name="twitter" placeholder="https://twitter.com/technova"></div>
+        <div class="form-group"><label>Instagram</label><input type="url" name="instagram" placeholder="https://instagram.com/technova"></div>
+      </div>
+      <div class="form-row">
+        <div class="form-group"><label>LinkedIn</label><input type="url" name="linkedin" placeholder="https://linkedin.com/company/technova"></div>
+      </div>
+      <div class="form-row">
+        <div class="form-group"><label>Company logo URL</label><input type="url" name="logo" placeholder="https://example.com/logo.png"></div>
+        <div class="form-group"><label>Apply URL</label><input type="url" name="applyUrl" placeholder="https://company.com/apply"></div>
+      </div>
+      <div class="form-row">
+        <div class="form-group"><label>Job Key (unique identifier) *</label><input type="text" name="key" placeholder="frontend-dev-2025" required></div>
+        <div class="form-group">
+          <label>Payment method</label>
+          <select name="paymentMethod">
+            <option value="">Select method</option>
+            <option>Credit Card</option>
+            <option>PayPal</option>
+            <option>Bank Transfer</option>
+          </select>
+        </div>
+      </div>
+    </section>
+
+    <button type="submit">Submit for Approval</button>
+  </form>
+  
+</div>
+  <section class="form-section">
+    <h2>Post a New Job</h2>
+
+    <form method="POST" action="/addjob">
+      <div class="form-row">
+        <input type="text" name="title" placeholder="Job Title" required>
+        <input type="text" name="company" placeholder="Company Name" required>
+      </div>
+      <div class="form-row">
+        <input type="text" name="location" placeholder="Location" required>
+        <input type="text" name="type" placeholder="Job Type (e.g. Full-time)" required>
+      </div>
+      <div class="form-row">
+        <textarea name="description" placeholder="Job Description" required></textarea>
+      </div>
+      <button type="submit">Post Job</button>
+    </form>
+  </section>
+
+<script>
+  const titles = document.querySelectorAll('.section-title');
+  const sections = document.querySelectorAll('section[data-title]');
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      const id = entry.target.getAttribute('data-title');
+      titles.forEach(t => {
+        t.classList.toggle('active', t.id === id && entry.isIntersecting);
+      });
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.4 });
+
+  sections.forEach(section => observer.observe(section));
+
+  // Handle job form submission
+  document.getElementById('job-form').addEventListener('submit', async function(e) {
+    e.preventDefault();
+
+    const formData = new FormData(e.target);
+    const jobData = {
+      title: formData.get('title'),
+      company: formData.get('company'),
+      location: formData.get('location'),
+      type: formData.get('type'),
+      description: formData.get('description'),
+      logo: formData.get('logo'),
+      applyUrl: formData.get('applyUrl'),
+      key: formData.get('key')
+    };
+
+    try {
+      const response = await fetch('/api/jobs', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(jobData)
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.message || 'Failed to submit job');
+      }
+
+      alert('Job submitted successfully! It will be reviewed and published soon.');
+      e.target.reset();
+    } catch (error) {
+      alert('Error submitting job: ' + error.message);
+    }
+  });
+</script>
+
+</body>
+</html>
